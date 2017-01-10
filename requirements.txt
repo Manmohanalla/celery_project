@@ -1,0 +1,7 @@
+Flask==0.12
+WTForms==2.1
+python-amazon-product-api==0.2.8
+python-amazon-simple-product-api==2.1.0
+ebaysdk==2.1.4
+PyMySQL==0.7.9
+celery==4.0.2

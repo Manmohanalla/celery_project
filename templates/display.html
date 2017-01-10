@@ -1,0 +1,59 @@
+<html>
+<head>
+    <title>Price</title>
+<style>
+@import url(http://fonts.googleapis.com/css?family=Amatic+SC:700);
+ 
+body{
+    text-align: center;    
+}
+h1{
+    font-family: 'Amatic SC', cursive;
+    font-weight: normal;
+    color: #8ac640;
+    font-size: 2.5em;
+}
+ 
+</style>
+ 
+</head>
+<link rel="icon" href="http://vignette1.wikia.nocookie.net/survivor-org/images/5/52/M_title.png/revision/latest?cb=20130927203814">
+<body>
+<div style="float:right">
+<form name="form1" method="post" action="/">
+  <input type="button" value="Back" onclick="window.history.back()" />
+</form>
+</div> 
+
+
+<div class="block1">
+<h1>Hello Guys!</h1>
+{% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+            {% for message in messages %}
+  <h2>Here is the cheapest price available from Amazon: {{message[1].price_and_currency[0]}} {{message[1].price_and_currency[1]}}</h2>
+  <h2>List Price Amazon is: {{message[1].list_price[0]}} {{message[1].list_price[1]}}</h2>
+  <h2>Here is the cheapest price available from Ebay: {{ebay_data[0]}} USD</h2>
+ 
+  {% if url %}
+  	<img src= {{url}}>
+  {% endif %}
+  <p>
+{{message[1].title}}  </p>
+<p>{{message[1].editorial_review}}</p>
+ <form action={{message[1].offer_url}}>
+    <input type="submit" value="Buy from Amazon" />
+</form>
+<form action={{ebay_data[1]}}>
+    <input type="submit" value="Buy from Ebay" />
+</form>
+ {% endfor %}
+  {% endif %}
+   {% endwith %}
+
+</div>
+
+ 
+
+</body>
+</html>

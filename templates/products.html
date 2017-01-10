@@ -1,0 +1,210 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Point Price!</title>
+    <!-- Bootstrap 3 -->
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap-theme.min.css">
+    <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+    <link rel="icon" href="http://vignette1.wikia.nocookie.net/survivor-org/images/5/52/M_title.png/revision/latest?cb=20130927203814">
+    <script src="https://netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
+    <style type="text/css" media="screen">
+        body {
+            padding-top: 80px;
+        }
+        #trailer .modal-dialog {
+            margin-top: 200px;
+            width: 640px;
+            height: 480px;
+        }
+        .hanging-close {
+            position: absolute;
+            top: -12px;
+            right: -12px;
+            z-index: 9001;
+        }
+        #trailer-video {
+            width: 100%;
+            height: 100%;
+        }
+        .movie-tile {
+            margin-bottom: 20px;
+            padding-top: 20px;
+        }
+        .movie-tile:hover {
+            background-color: #EEE;
+            cursor: pointer;
+        }
+        .scale-media {
+            padding-bottom: 56.25%;
+            position: relative;
+        }
+        .scale-media iframe {
+            border: none;
+            height: 100%;
+            position: absolute;
+            width: 100%;
+            left: 0;
+            top: 0;
+            background-color: white;
+        }
+    </style>
+
+</head>
+
+  <body>
+
+    <!-- Main Page Content -->
+    <div class="container">
+      <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="container">
+          <div class="navbar-header">
+            <a class="navbar-brand" href="">Products</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container">
+<div class="col-md-6 col-lg-4 movie-tile text-center">
+    <img src= {{amazon[0]['Product_Image']}} height="320" width="320">
+
+  <h3>Amazon: {{amazon[0]['Product_Price']}} USD</h3>
+  <h3>Ebay: {{ebay[0]['Product_Price']}} USD</h3>
+  <p>
+{{amazon[0]['Product_Title']}}  </p>
+ <form action={{amazon[0]['Product_URL']}}>
+    <input type="submit" value="Buy from Amazon" />
+</form>
+<p></p>
+<form action={{ebay[0]['Product_URL']}}>
+    <input type="submit" value="Buy from Ebay" />
+</form>
+</div>
+<div class="col-md-6 col-lg-4 movie-tile text-center">
+    <img src= http://target.scene7.com/is/image/Target/51265453?wid=450&hei=450&fmt=pjpeg height="320" width="320">
+
+  <h3>Amazon: {{amazon[1]['Product_Price']}} USD</h3>
+  <h3>Ebay: {{ebay[2]['Product_Price']}} USD</h3>
+  <p>
+{{amazon[1]['Product_Title']}}  </p>
+ <form action={{amazon[1]['Product_URL']}}>
+    <input type="submit" value="Buy from Amazon" />
+</form>
+<p></p>
+<form action={{ebay[2]['Product_URL']}}>
+    <input type="submit" value="Buy from Ebay" />
+</form>
+</div>
+<div class="col-md-6 col-lg-4 movie-tile text-center">
+    <img src= https://images-na.ssl-images-amazon.com/images/I/719dJ0z3-jL._SL1500_.jpg height="320" width="172">
+
+  <h3>Amazon: {{amazon[2]['Product_Price']}} USD</h3>
+  <h3>Ebay: {{ebay[1]['Product_Price']}} USD</h3>
+  <p>
+{{amazon[2]['Product_Title']}}  </p>
+ <form action={{amazon[2]['Product_URL']}}>
+    <input type="submit" value="Buy from Amazon" />
+</form>
+<p></p>
+<form action={{ebay[1]['Product_URL']}}>
+    <input type="submit" value="Buy from Ebay" />
+</form>
+</div>
+<div class="col-md-6 col-lg-4 movie-tile text-center">
+    <img src= https://images-na.ssl-images-amazon.com/images/I/719dJ0z3-jL._SL1500_.jpg height="320" width="172">
+
+  <h3>Amazon: {{amazon[2]['Product_Price']}} USD</h3>
+  <h3>Ebay: {{ebay[1]['Product_Price']}} USD</h3>
+  <p>
+{{amazon[2]['Product_Title']}}  </p>
+ <form action={{amazon[2]['Product_URL']}}>
+    <input type="submit" value="Buy from Amazon" />
+</form>
+<p></p>
+<form action={{ebay[1]['Product_URL']}}>
+    <input type="submit" value="Buy from Ebay" />
+</form>
+</div>
+<div class="col-md-6 col-lg-4 movie-tile text-center">
+    <img src= https://images-na.ssl-images-amazon.com/images/I/719dJ0z3-jL._SL1500_.jpg height="320" width="172">
+
+  <h3>Amazon: {{amazon[2]['Product_Price']}} USD</h3>
+  <h3>Ebay: {{ebay[1]['Product_Price']}} USD</h3>
+  <p>
+{{amazon[2]['Product_Title']}}  </p>
+ <form action={{amazon[2]['Product_URL']}}>
+    <input type="submit" value="Buy from Amazon" />
+</form>
+<p></p>
+<form action={{ebay[1]['Product_URL']}}>
+    <input type="submit" value="Buy from Ebay" />
+</form>
+</div>
+<div class="col-md-6 col-lg-4 movie-tile text-center">
+    <img src= https://images-na.ssl-images-amazon.com/images/I/719dJ0z3-jL._SL1500_.jpg height="320" width="172">
+
+  <h3>Amazon: {{amazon[2]['Product_Price']}} USD</h3>
+  <h3>Ebay: {{ebay[1]['Product_Price']}} USD</h3>
+  <p>
+{{amazon[2]['Product_Title']}}  </p>
+ <form action={{amazon[2]['Product_URL']}}>
+    <input type="submit" value="Buy from Amazon" />
+</form>
+<p></p>
+<form action={{ebay[1]['Product_URL']}}>
+    <input type="submit" value="Buy from Ebay" />
+</form>
+</div>
+<div class="col-md-6 col-lg-4 movie-tile text-center">
+    <img src= https://images-na.ssl-images-amazon.com/images/I/719dJ0z3-jL._SL1500_.jpg height="320" width="172">
+
+  <h3>Amazon: {{amazon[2]['Product_Price']}} USD</h3>
+  <h3>Ebay: {{ebay[1]['Product_Price']}} USD</h3>
+  <p>
+{{amazon[2]['Product_Title']}}  </p>
+ <form action={{amazon[2]['Product_URL']}}>
+    <input type="submit" value="Buy from Amazon" />
+</form>
+<p></p>
+<form action={{ebay[1]['Product_URL']}}>
+    <input type="submit" value="Buy from Ebay" />
+</form>
+</div>
+<div class="col-md-6 col-lg-4 movie-tile text-center">
+    <img src= https://images-na.ssl-images-amazon.com/images/I/719dJ0z3-jL._SL1500_.jpg height="320" width="172">
+
+  <h3>Amazon: {{amazon[2]['Product_Price']}} USD</h3>
+  <h3>Ebay: {{ebay[1]['Product_Price']}} USD</h3>
+  <p>
+{{amazon[2]['Product_Title']}}  </p>
+ <form action={{amazon[2]['Product_URL']}}>
+    <input type="submit" value="Buy from Amazon" />
+</form>
+<p></p>
+<form action={{ebay[1]['Product_URL']}}>
+    <input type="submit" value="Buy from Ebay" />
+</form>
+</div>
+<div class="col-md-6 col-lg-4 movie-tile text-center">
+    <img src= https://images-na.ssl-images-amazon.com/images/I/719dJ0z3-jL._SL1500_.jpg height="320" width="172">
+
+  <h3>Amazon: {{amazon[2]['Product_Price']}} USD</h3>
+  <h3>Ebay: {{ebay[1]['Product_Price']}} USD</h3>
+  <p>
+{{amazon[2]['Product_Title']}}  </p>
+ <form action={{amazon[2]['Product_URL']}}>
+    <input type="submit" value="Buy from Amazon" />
+</form>
+<p></p>
+<form action={{ebay[1]['Product_URL']}}>
+    <input type="submit" value="Buy from Ebay" />
+</form>
+</div>
+    </div>
+  </body>
+</html>
+
+  
