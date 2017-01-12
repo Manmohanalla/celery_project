@@ -1,20 +1,35 @@
+'''
+Product information from amazon api
+'''
+import configparser
+
 from amazon.api import AmazonAPI
-from amazon.api import AmazonProduct
 
-import json
+CONFIG = configparser.ConfigParser()
+CONFIG._interpolation = configparser.ExtendedInterpolation()
+CONFIG.read('config.ini')
+KEY1 = CONFIG.get('amazon_keys', 'key1')
+KEY2 = CONFIG.get('amazon_keys', 'key2')
+USERNAME = CONFIG.get('amazon_keys', 'username')
 
+class Amazonapi(object): 
+    '''
+    AMAZON API CLASS
+    '''
+    def __init__(self):
+        self.key1 = KEY1
+        self.key2 = KEY2
+        self.username = USERNAME
 
-with open('/Users/barewolf/projects/amazon/config.json') as data_file:    
-    data = json.load(data_file)
-class Amazonapi(object):
-    
     def search_product(self, keyword):
-        amazon = AmazonAPI(data['key1'], data['key2'],\
-         data['username'])
+        '''
+        search amazon Products by passing item ID
+        '''
+        print self.username
+        amazon = AmazonAPI(self.key1, self.key2,\
+         self.username)
         try:
-            product = amazon.lookup(ItemId = keyword)
+            product = amazon.lookup(ItemId=keyword)
         except Exception as e:
             return e
         return product
-
-

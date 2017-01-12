@@ -1,9 +1,22 @@
+'''
+Scheduling and getting prices from API's using celery
+'''
+import configparser
+
 from celery import Celery
 from celery.schedules import crontab
+
 from amazonapi import Amazonapi
 from ebay_api import EbayApi
 from update_database import UpdateDatabase
 from check_tables import CheckTables
+
+CONFIG = configparser.ConfigParser()
+CONFIG._interpolation = configparser.ExtendedInterpolation()
+CONFIG.read('config.ini')
+KEY = CONFIG.get('ebay_keys', 'key')
+AMAZON_PRODUCTS = CONFIG.get('amazon_keys', 'products')
+EBAY_PRODUCT = CONFIG.get('ebay_keys', 'products')
 
 app = Celery('tasks', backend='amqp', broker='amqp://guest:guest@localhost')
 
@@ -28,7 +41,7 @@ def get_prices_amazon():
     '''
     Getting Amazon data
     '''
-    product_ids = ('B01LYT95XR, B01E3SNO1G, B01LRLJV28')
+    product_ids = AMAZON_PRODUCTS
     amazon_api = Amazonapi()
     amazon_products = amazon_api.search_product(product_ids)
     for i in amazon_products:
@@ -53,7 +66,7 @@ def get_prices_ebay():
     Getting ebay data
     '''
     ebay_api = EbayApi()
-    product_id = ['182379412103', '182300477854', '192047840099']
+    product_id = EBAY_PRODUCT.split(', ')
     for i in product_id:
         ebay_product = ebay_api.api(i)[0]
         product_price = ebay_product.sellingStatus.currentPrice.value

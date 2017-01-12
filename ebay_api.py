@@ -1,43 +1,35 @@
+'''
+Ebay Api
+'''
+import configparser
+
 from ebaysdk.exception import ConnectionError
 from ebaysdk.finding import Connection
 
-import json
-import datetime
+CONFIG = configparser.ConfigParser()
+CONFIG._interpolation = configparser.ExtendedInterpolation()
+CONFIG.read('config.ini')
+KEY = CONFIG.get('ebay_keys', 'key')
 
-with open('/Users/barewolf/projects/amazon/config.json') as data_file:    
-    data = json.load(data_file)
 class EbayApi(object):
+    '''
+    Ebay API Class
+    '''
+    def __init__(self):
+        self.key1 = KEY
+
     def api(self, keyword):
+        '''
+        ebay api
+        '''
         try:
-            api = Connection(appid=data['ebay_key'], config_file=None)
+            api = Connection(appid=self.key1, config_file=None)
             response = api.execute('findItemsAdvanced', {'keywords': keyword})
-        except ConnectionError as e:
-            return(e)
-
+        except ConnectionError as connection_error:
+            return connection_error
         try:
-            x = response.reply.searchResult.item
-        except Exception as e:
-            return e
+            resp = response.reply.searchResult.item
+        except Exception as no_result:
+            return no_result
+        return resp
         
-        # min = x[0].sellingStatus.currentPrice.value
-        # title = x[0].title
-        #print min,title
-
-        # for i in x:
-        #     max = i.sellingStatus.currentPrice.value
-            # if float(max) < float(min):
-        #         min = max
-        #         title = i.title
-        # url = x[0].viewItemURL
-        # return x[0].sellingStatus.currentPrice.value,url,x[0]
-        return x
-
-# print EbayApi().api('182379412103')
-# print EbayApi().api('182300477854')
-# print EbayApi().api('192047840099')[0].galleryPlusPictureURL
-
-# print EbayApi().api('182379412103')[0].sellingStatus.currentPrice.value # price
-# print EbayApi().api('182379412103')[0].viewItemURL # URL
-# print EbayApi().api('182379412103')[0].itemId # ID
-# print EbayApi().api('182379412103')[0].title # title
-# print EbayApi().api('182379412103')[0].galleryPlusPictureURL # image
